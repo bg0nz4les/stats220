@@ -1,0 +1,70 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+h2 {
+  font-family: monospace;
+}
+a {
+  font-size: 20px;
+  font-family: monospace;
+}
+```
+
+
+```{r}
+library(tidyverse)
+
+csv_file <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQQfD4SXVDzkoOutafvWrCrF2fGRa33qoL5KE_wvvTEaCqyCAzmTJqoybDdfMXNoXkcY5S0kqdCPr4/pub?output=csv"
+
+logged_data <- read_csv(csv_file) 
+
+latest_data <- logged_data %>% 
+  rename(temperature_feel = 2,
+         battery_percentage = 3,
+         did_you_eat_past_hour = 4,
+         meal_count = 5)
+
+
+avr_battery <- mean(latest_data$battery_percentage)
+
+lowest_battery <- min(latest_data$battery_percentage)
+
+avr_meal_count <- mean(latest_data$meal_count, na.rm = TRUE)
+
+highest_meal_count <- max(latest_data$meal_count, na.rm = TRUE)
+
+
+ggplot(data = latest_data) +
+  geom_bar(aes(x = temperature_feel, fill = temperature_feel)) + 
+  labs(title = "How was the temperature for you?", 
+       subtitle = "Comparing the feel of the temperatures at different times",
+       x = "How does the temperature feel like for you?", 
+       y = "Number of responses")
+
+ggplot(data = latest_data) +
+  geom_bar(aes(x = did_you_eat_past_hour, fill = did_you_eat_past_hour)) +
+  labs(title = "Did you eat anytime during the past hour?", 
+       subtitle = "Comparing when I ate during the past hour at different times",
+       x = "Did you eat anytime at the past hour?", 
+       y = "Number of responses")
+
+
+
+```
+
+## Temperature feel and hourly eating activity
+
+For this report, I wanted to see what my status is throughout the day. I measured this through many variables such as my battery phone percentage, the meal count for today, and so on. For the graphs, I have used two different variables. One is temperature feel (which measures how I felt about the temperature around me generally), as well as my hourly eating activity (This variable shows how many times I have eaten in the past hour when answering the survey). 
+
+From the survey, I was able to make dynamic graphs out of two variables (temperature feel and hourly eating activity). For the variable "temperature_feel", we can see how most of the responses is "Just right". 
+And for the variable "did_you_eat_past_hour", we can see how the graph is even on both sides (10 "no" responses and 10 "yes" responses). 
+
+I was also able to collect data from my other variables (such as battery phone percentage and meal count). Aside from the dynamic graphs, I found out that in the 20 occasions I've answered the survey, the average(mean) battery percentage of my phone is `r avr_battery`%. While the lowest data point recorded for battery percentage is `r lowest_battery`%. For meal count, in all occasions I answered the survey, I have had around `r avr_meal_count` on average. And the most meals I have had when answering the survey is `r highest_meal_count`.
