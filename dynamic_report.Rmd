@@ -9,12 +9,18 @@ knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
 ```
 
 ```{css}
+body {
+  background-color: #C4A287;
+  color: #ffffff;
+}
 h2 {
   font-family: monospace;
+  color: #ffffff;
 }
 a {
   font-size: 20px;
   font-family: monospace;
+  color: #ffffff;
 }
 ```
 
