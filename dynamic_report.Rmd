@@ -39,15 +39,15 @@ latest_data <- logged_data %>%
          meal_count = 5)
 
 
-avr_battery <- mean(latest_data$battery_percentage)
+avr_battery <- mean(latest_data$battery_percentage) # This calculates the mean of the battery perecentages that I put in the survey
 
-lowest_battery <- min(latest_data$battery_percentage)
+lowest_battery <- min(latest_data$battery_percentage) # This finds the lowest battery that is recorded by the survey
 
-avr_meal_count <- mean(latest_data$meal_count, na.rm = TRUE)
+avr_meal_count <- mean(latest_data$meal_count, na.rm = TRUE) # This calculates how much meals I ate on average when answering the survey
 
-highest_meal_count <- max(latest_data$meal_count, na.rm = TRUE)
+highest_meal_count <- max(latest_data$meal_count, na.rm = TRUE) # This finds the most amount of meals I had when answering the survey
 
-
+# This will show the graph for the variable "temperature_feel"
 ggplot(data = latest_data) +
   geom_bar(aes(x = temperature_feel, fill = temperature_feel)) + 
   labs(title = "How was the temperature for you?", 
@@ -55,6 +55,7 @@ ggplot(data = latest_data) +
        x = "How does the temperature feel like for you?", 
        y = "Number of responses")
 
+# This will show the graph for the variable "did_you_eat_past_hour"
 ggplot(data = latest_data) +
   geom_bar(aes(x = did_you_eat_past_hour, fill = did_you_eat_past_hour)) +
   labs(title = "Did you eat anytime during the past hour?", 
