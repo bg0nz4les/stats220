@@ -70,7 +70,6 @@ ggplot(data = latest_data) +
 
 For this report, I wanted to see what my status is throughout the day. I measured this through many variables such as my battery phone percentage, the meal count for today, and so on. For the graphs, I have used two different variables. One is temperature feel (which measures how I felt about the temperature around me generally), as well as my hourly eating activity (This variable shows how many times I have eaten in the past hour when answering the survey). 
 
-From the survey, I was able to make dynamic graphs out of two variables (temperature feel and hourly eating activity). For the variable "temperature_feel", we can see how most of the responses is "Just right". 
-And for the variable "did_you_eat_past_hour", we can see how the graph is even on both sides (10 "no" responses and 10 "yes" responses). 
+From the survey, I was able to make dynamic graphs out of two variables (temperature feel and hourly eating activity). For the variable "temperature_feel", we can see how most of the responses is "Just right". And for the variable "did_you_eat_past_hour", we can see how the graph is almost even on both yes and no. 
 
 I was also able to collect data from my other variables (such as battery phone percentage and meal count). Aside from the dynamic graphs, I found out that in the 20 occasions I've answered the survey, the average(mean) battery percentage of my phone is `r avr_battery`%. While the lowest data point recorded for battery percentage is `r lowest_battery`%. For meal count, in all occasions I answered the survey, I have had around `r avr_meal_count` on average. And the most meals I have had when answering the survey is `r highest_meal_count`.
